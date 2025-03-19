@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.18;
+
 import {Test, console} from "lib/forge-std/src/Test.sol";
 import {FundMe} from "../../src/fundme.sol";
 import {deployFundMe} from "../../script/deployFundme.s.sol";
@@ -10,6 +11,7 @@ contract fundMeTest is Test {
     address user = makeAddr("user");
     uint256 constant GAS_PRICE = 1;
     uint256 constant BALANCE = 10 ether;
+
     modifier funded() {
         vm.prank(user);
         fundme.fund{value: 5 ether}();
@@ -92,10 +94,7 @@ contract fundMeTest is Test {
         console.log(startingOwnerBalance);
         console.log(startingFundBalance);
         assert(address(fundme).balance == 0);
-        assert(
-            startingFundBalance + startingOwnerBalance ==
-                fundme.getI_owner().balance
-        );
+        assert(startingFundBalance + startingOwnerBalance == fundme.getI_owner().balance);
     }
 
     function testWithdrawFromMultipleUsersCheaper() public {
@@ -115,9 +114,6 @@ contract fundMeTest is Test {
         console.log(startingOwnerBalance);
         console.log(startingFundBalance);
         assert(address(fundme).balance == 0);
-        assert(
-            startingFundBalance + startingOwnerBalance ==
-                fundme.getI_owner().balance
-        );
+        assert(startingFundBalance + startingOwnerBalance == fundme.getI_owner().balance);
     }
 }

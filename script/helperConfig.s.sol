@@ -1,5 +1,6 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
+
 import {Script} from "forge-std/Script.sol";
 import {MockV3Aggregator} from "../test/mockAggregatorV3.sol";
 
@@ -9,9 +10,11 @@ contract helperConfig is Script {
 
     uint8 public constant DECIMAL = 8;
     int256 public constant INITIAL_PRICE = 2000e8;
+
     struct networkConfig {
         address pricefeed;
     }
+
     networkConfig public active;
 
     constructor() {
@@ -23,9 +26,7 @@ contract helperConfig is Script {
     }
 
     function getSepoliaConfig() public pure returns (networkConfig memory) {
-        networkConfig memory sepolia = networkConfig(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
-        );
+        networkConfig memory sepolia = networkConfig(0x694AA1769357215DE4FAC081bf1f309aDC325306);
         return sepolia;
     }
 
