@@ -94,7 +94,10 @@ contract fundMeTest is Test {
         console.log(startingOwnerBalance);
         console.log(startingFundBalance);
         assert(address(fundme).balance == 0);
-        assert(startingFundBalance + startingOwnerBalance == fundme.getI_owner().balance);
+        assert(
+            startingFundBalance + startingOwnerBalance ==
+                fundme.getI_owner().balance
+        );
     }
 
     function testWithdrawFromMultipleUsersCheaper() public {
@@ -114,6 +117,9 @@ contract fundMeTest is Test {
         console.log(startingOwnerBalance);
         console.log(startingFundBalance);
         assert(address(fundme).balance == 0);
-        assert(startingFundBalance + startingOwnerBalance == fundme.getI_owner().balance);
+        assert(
+            startingFundBalance + startingOwnerBalance ==
+                fundme.getI_owner().balance
+        );
     }
 }
